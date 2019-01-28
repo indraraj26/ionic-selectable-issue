@@ -1,0 +1,63 @@
+<ion-header>
+        <ion-toolbar color="primary">
+                <button ion-button icon-only menuToggle="false" color="white" (click)="dismiss()">
+                    <ion-icon name="arrow-back"></ion-icon>
+                </button>
+                <ion-title>
+                    Contact
+        
+                </ion-title>
+            </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
+      <ion-card>
+  <ion-card-content>
+      <ion-list>
+    <ion-item>
+        <ion-label stacked class="label-color">Country</ion-label>
+        <ionic-selectable item-content [(ngModel)]="manageContact.country" name="country" [items]="countryList"
+            itemValueField="id" itemTextField="name" [canSearch]="true" [shouldStoreItemValue]="true"
+            (onChange)="getState(manageContact.country)">
+            <ng-template ionicSelectableCloseButtonTemplate>
+                <ion-icon name="close-circle" style="font-size: 24px;" color="primary"></ion-icon>
+            </ng-template>
+        </ionic-selectable>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked class="label-color">State / District</ion-label>
+        <ionic-selectable item-content [(ngModel)]="manageContact.state" name="state" [items]="stateList"
+            itemValueField="id" itemTextField="state" [canSearch]="true" [shouldStoreItemValue]="true"
+            (onChange)="getCities(manageContact.state)">
+            <ng-template ionicSelectableCloseButtonTemplate>
+                <ion-icon name="close-circle" style="font-size: 24px;" color="primary"></ion-icon>
+            </ng-template>
+        </ionic-selectable>
+    </ion-item>
+
+        <ion-item>
+            <ion-label stacked class="label-color">City / Upzila</ion-label>
+            <ionic-selectable item-content [(ngModel)]="manageContact.city" name="city" [items]="cityList"
+                itemValueField="id" itemTextField="name" [canSearch]="true" [shouldStoreItemValue]="true">
+                <ng-template ionicSelectableCloseButtonTemplate >
+                    <ion-icon name="close-circle" style="font-size: 24px;" color="primary"></ion-icon>
+                </ng-template>
+            </ionic-selectable>
+        </ion-item>
+    </ion-list>
+    </ion-card-content>
+    </ion-card>
+
+   <ion-card>
+       <ion-card-content>
+            <ion-list>
+        <button ion-button type="submit">submit</button>
+    </ion-list>
+       </ion-card-content>
+    </ion-card>
+
+
+      </form>
+</ion-content>
